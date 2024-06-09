@@ -1,0 +1,10 @@
+name: poti87-first-workflow
+on: workflow_dispatch
+jobs:
+  poti87-first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: poti87-first-step
+        run: echo "Szia!"
+      - name: poti87-second-step
+        run: echo "Viszlát!"
