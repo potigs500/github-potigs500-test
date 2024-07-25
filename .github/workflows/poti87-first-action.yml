@@ -9,6 +9,11 @@ jobs:
     steps:
       - name: Get the code from my repository
         uses: actions/checkout@v4
+      - name: Add Java, because it was not supported
+        uses: actions/setup-java@v4
+         with:
+          distribution: 'temurin'
+          java-version: '21'      
       - name: Install dependencies
         run: mvn clean install
       - name: Run my all test 
