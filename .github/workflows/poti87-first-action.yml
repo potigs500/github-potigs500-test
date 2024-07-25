@@ -1,8 +1,9 @@
 name: test-workflow
-on:
-  push:
+on:  
+  [push:
     branches:
-      - 'main'
+      - 'main',
+   workflow_dispatch]   
 jobs:
   test-job:
     runs-on: ubuntu-latest
