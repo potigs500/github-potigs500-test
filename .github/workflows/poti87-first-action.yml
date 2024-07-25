@@ -1,10 +1,17 @@
-name: poti87-first-workflow
-on: workflow_dispatch
+name: test-workflow
+on:
+  push:
+    branches:
+      - 'main'
 jobs:
-  poti87-first-job:
+  test-job:
     runs-on: ubuntu-latest
     steps:
-      - name: poti87-first-step
-        run: echo "Szia!"
-      - name: poti87-second-step
-        run: echo "Viszlát!"
+      - name: Get the code from my repository
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: mvn clean install
+      - name: Run my all test 
+        run: mvn test
+      
+
