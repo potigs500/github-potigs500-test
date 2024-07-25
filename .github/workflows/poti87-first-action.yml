@@ -19,6 +19,7 @@ jobs:
       - name: Run my all test 
         run: mvn test
   deploy-job:
+    needs: test-job
     runs-on: ubuntu-latest
     steps:
       - name: Get the code from my repository
