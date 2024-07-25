@@ -18,5 +18,20 @@ jobs:
         run: mvn clean install
       - name: Run my all test 
         run: mvn test
+  deploy-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the code from my repository
+        uses: actions/checkout@v4
+      - name: Add Java, because it was not supported
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'      
+      - name: Install dependencies
+        run: mvn clean install
+      - name: Deploy project
+        run: echo "Pl itt lehetne image-t készíteni és felpusholni az image repóba"
+      
       
 
