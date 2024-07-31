@@ -8,6 +8,7 @@ public class GhesApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(GhesApplication.class, args);
+		System.err.println("Hello");
 	}
 
 }

@@ -6,6 +6,9 @@ on:
   workflow_dispatch:
     branches:
       - 'main'
+  pull_request:  
+    types:  
+    - opened
 jobs:
   test-job:
     runs-on: ubuntu-latest
@@ -34,8 +37,13 @@ jobs:
           java-version: '21'      
       - name: Install dependencies
         run: mvn clean install
-      - name: Deploy project
-        run: echo "Pl itt lehetne image-t készíteni és felpusholni az image repóba"
-      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Create upload java artifact
+          path: |
+            target
+            !target/*original
+         
       
 
