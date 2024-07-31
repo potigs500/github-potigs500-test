@@ -51,7 +51,7 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
-          name: Upload artifact    
+          name: Create upload java artifact    
       - name: Files list in directory 
         run: ls
 
