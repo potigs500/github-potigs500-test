@@ -24,7 +24,7 @@ jobs:
         run: mvn clean install
       - name: Run my all test 
         run: mvn test
-  deploy-job:
+  upload-job:
     needs: test-job
     runs-on: ubuntu-latest
     steps:
@@ -44,6 +44,15 @@ jobs:
           path: |
             target
             !target/*original
-         
-      
+  download-job:  
+    needs: upload-job
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: Upload artifact    
+      - name: Files list in directory 
+        run: ls
+
 
