@@ -27,6 +27,8 @@ jobs:
   upload-job:
     needs: test-job
     runs-on: ubuntu-latest
+    outputs:
+      my-output-first-key: ${{ steps.Find generated jar file name and save in a variable to use in output.outputs.jar_name }}
     steps:
       - name: Get the code from my repository
         uses: actions/checkout@v4
@@ -44,6 +46,10 @@ jobs:
           path: |
             target
             !target/*original
+      - name: Find generated jar file name and save in a variable to use in output
+        run: $(echo "jar_name" | find /target/ -name "*.jar")
+      - name: Find generated jar file name and save in GITHUB_OUTPUT variable    
+        run:  echo $my-output-first-key       
   download-job:  
     needs: upload-job
     runs-on: ubuntu-latest
@@ -54,5 +60,6 @@ jobs:
           name: Create upload java artifact    
       - name: Files list in directory 
         run: ls
+         
 
 
