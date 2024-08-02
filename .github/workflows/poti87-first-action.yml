@@ -48,7 +48,9 @@ jobs:
             !target/*original
       - name: Output value for other job
         id: output_value_for_other_job
-        run: echo "output_for_other_jar_name='ghes-0.0.1-SNAPSHOT.jar'" >> "$GITHUB_OUTPUT" 
+        run: | 
+          fileName=$(find target/*.jar -type f)
+          echo "output_for_other_jar_name=$fileName" >> "$GITHUB_OUTPUT" 
       - name: Output value for the same job
         id: output_value_for_the_same_job
         run: echo "output_for_same_job_jar_name='Ezt az értéket szeretném látni ebben a job-ban'" >> "$GITHUB_OUTPUT"   
