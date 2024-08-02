@@ -48,10 +48,8 @@ jobs:
             !target/*original
       - name: Find generated jar file name and save in a variable to use in output
         id: jar_file_name_output
-        run: |
-          jar-file-name=$(find target -type f '*.jar') 
-          echo $jar-file-name
-      - name: Find generated jar file name and save in GITHUB_OUTPUT variable    
+        run: echo "jar_name='ghes-0.0.1-SNAPSHOT.jar'" >> "$GITHUB_OUTPUT"
+      - name: Write out jar file name 
         run:  echo $my-output-first-key       
   download-job:  
     needs: upload-job
